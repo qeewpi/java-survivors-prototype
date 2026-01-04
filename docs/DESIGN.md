@@ -137,3 +137,43 @@ Enemy e = new Enemy.Builder()
 ```
 Final Damage = (Weapon.baseDamage + Player.flatDamage) × Player.damageMultiplier
 ```
+
+---
+
+### Rendering Strategy
+
+**Decision:** LibGDX with `ShapeRenderer` (colored rectangles)
+
+**Approach:**
+- No sprites/textures needed—entities are **colored squares**
+- Player = Blue, Enemies = Red (tier-based shades), Projectiles = Yellow
+- LibGDX provides game loop with delta time out of the box
+
+**Color Scheme:**
+| Entity | Color |
+|--------|-------|
+| Player | `Color.BLUE` |
+| D-tier Enemy | `Color.RED` |
+| C-tier Enemy | `Color.ORANGE` |
+| Weapon/Projectile | `Color.YELLOW` |
+
+**Minimal Render Example:**
+```java
+shapeRenderer.begin(ShapeType.Filled);
+shapeRenderer.setColor(Color.BLUE);
+shapeRenderer.rect((float)player.getX(), (float)player.getY(), 32, 32);
+for (Enemy e : enemies) {
+    shapeRenderer.setColor(e.getTier().getColor());
+    shapeRenderer.rect((float)e.getX(), (float)e.getY(), 24, 24);
+}
+shapeRenderer.end();
+```
+
+**Package Structure:**
+```
+src/
+├── entities/        # Backend logic (rendering-agnostic) ✅
+├── weapons/         # Backend logic
+├── core/            # LibGDX game class, screen management
+└── rendering/       # ShapeRenderer wrapper
+```

@@ -25,8 +25,9 @@
 - [ ] Difficulty scaling (density, enemy types)
 - [ ] Wave completion/transition
 
-## Phase 5: Game Loop
-- [ ] Main game loop
-- [ ] Rendering (basic/console or simple graphics)
+## Phase 5: Game Loop (LibGDX)
+- [ ] LibGDX project setup
+- [ ] Main game loop with delta time
+- [ ] Rendering with `ShapeRenderer` (colored rectangles)
 - [ ] Input handling
 - [ ] Game state management
