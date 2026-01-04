@@ -1,30 +1,15 @@
 package entities;
 
-public class Player extends Entity implements Damageable {
-    private int health;
-    
+import weapons.Weapon;
+
+public class Player extends LivingEntity {
     private PlayerStats stats;
+    private Weapon currentWeapon;
 
-    public Player(double x, double y, double speed) {
-        super(x, y, speed);
-        this.health = 10;
-        this.stats = new PlayerStats();
-    }
-
-    @Override
-    public void takeDamage(int amount) {
-        this.health -= amount;
-
-    }
-
-    @Override
-    public int getHealth() {
-        return this.health;
-    }
-
-    @Override
-    public boolean isDead() {
-        return this.health <= 0;
+    public Player(double x, double y, double speed, int health, int damage, PlayerStats stats, Weapon currentWeapon) {
+        super(x, y, speed, health, damage);
+        this.stats = stats;
+        this.currentWeapon = currentWeapon;
     }
 
     @Override
