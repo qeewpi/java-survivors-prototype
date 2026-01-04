@@ -1,14 +1,16 @@
 # Java Survivors Prototype - Task Checklist
 
-## Phase 1: Foundation (MVP)
+## Phase 1: Foundation (MVP) ✅
 - [x] Project setup & package structure
 - [x] Core interfaces (`Movable`, `Damageable`)
 - [x] `Entity` abstract class
+- [x] `LivingEntity` abstract class (implements Damageable)
 - [x] `Player` class with `PlayerStats`
-- [/] Basic `Enemy` class with tiers
+- [x] `Enemy` class with `EnemyTier` enum
+- [x] **Builder pattern** for `LivingEntity`, `Player`, `Enemy`
 
 ## Phase 2: Combat System
-- [ ] Weapon hierarchy (`Weapon` → `MeleeWeapon` → `Sword`)
+- [/] Weapon hierarchy (`Weapon` → `MeleeWeapon` → `Sword`) *(stub created)*
 - [ ] Attack/damage mechanics
 - [ ] Collision detection
 

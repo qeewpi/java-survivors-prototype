@@ -12,12 +12,7 @@ A Vampire Survivors / Megabonk-inspired roguelike game built in Java to practice
 | Level-up with RNG rolls | 📋 Planned | Stat boosts, new weapons (max 3) |
 | Stat boost items | 📋 Planned | Flat bonuses, multiplier system |
 | 5 waves with scaling | 📋 Planned | Density + speed increase |
-| Core stats system | 📋 Planned | damage, atk speed, cooldown, luck |
-
-**Deferred to post-MVP:**
-- Effect items (lightning, periodic damage)
-- Ranged/Magic weapon classes
-- Higher tier enemies (B, A, S)
+| Core stats system | ✅ Done | damage, atk speed, cooldown, luck |
 
 ---
 
@@ -28,25 +23,17 @@ A Vampire Survivors / Megabonk-inspired roguelike game built in Java to practice
 ```
 survivor-game/
 ├── src/
-│   ├── game/
-│   │   └── Game.java          # Main loop, game state
 │   ├── entities/
-│   │   ├── Movable.java       # Interface
-│   │   ├── Damageable.java    # Interface  
-│   │   ├── Entity.java        # Abstract base
-│   │   ├── PlayerStats.java   # Player stat multipliers
-│   │   ├── Player.java
-│   │   ├── Enemy.java
-│   │   └── Projectile.java    # For future ranged weapons
-│   ├── weapons/
-│   │   ├── Weapon.java        # Abstract
-│   │   ├── MeleeWeapon.java   # Abstract
-│   │   └── Sword.java         # Concrete MVP weapon
-│   ├── items/
-│   │   └── Item.java          # Stat boost items
-│   └── systems/
-│       ├── WaveManager.java   # Wave spawning/scaling
-│       └── StatsManager.java  # Player stats calculation
+│   │   ├── Movable.java       # Interface ✅
+│   │   ├── Damageable.java    # Interface ✅
+│   │   ├── Entity.java        # Abstract base ✅
+│   │   ├── LivingEntity.java  # Abstract + Builder ✅
+│   │   ├── EnemyTier.java     # Enum ✅
+│   │   ├── PlayerStats.java   # Stat multipliers ✅
+│   │   ├── Player.java        # + Builder ✅
+│   │   └── Enemy.java         # + Builder ✅
+│   └── weapons/
+│       └── Weapon.java        # Abstract (stub)
 └── README.md
 ```
 
@@ -55,14 +42,12 @@ survivor-game/
 ### Core Interfaces
 
 ```java
-// Movable.java
 interface Movable {
     void move(double deltaX, double deltaY);
     double getX();
     double getY();
 }
 
-// Damageable.java  
 interface Damageable {
     void takeDamage(int amount);
     int getHealth();
@@ -92,68 +77,55 @@ classDiagram
     
     class Entity {
         <<abstract>>
-        #x: double
-        #y: double
-        #speed: double
+        #x, y, speed: double
         +move(deltaX, deltaY)
         +update()*
     }
     
+    class LivingEntity {
+        <<abstract>>
+        -health, damage: int
+        +takeDamage(amount)
+        +isDead()
+        +Builder pattern
+    }
+    
     class Player {
-        -health: int
         -stats: PlayerStats
         -currentWeapon: Weapon
-        +takeDamage(amount)
-        +attack()
-        +levelUp()
+        +Builder pattern
     }
     
     class Enemy {
-        -health: int
-        -damage: int
-        -tier: EnemyTier
-        +takeDamage(amount)
-        +attack()
+        -enemyTier: EnemyTier
+        +Builder pattern
     }
     
     Movable <|.. Entity
-    Entity <|-- Player
-    Entity <|-- Enemy
-    Damageable <|.. Player
-    Damageable <|.. Enemy
+    Entity <|-- LivingEntity
+    Damageable <|.. LivingEntity
+    LivingEntity <|-- Player
+    LivingEntity <|-- Enemy
 ```
 
 ---
 
-### Weapon Hierarchy
+### Builder Pattern
 
-```mermaid
-classDiagram
-    class Weapon {
-        <<abstract>>
-        #baseDamage: int
-        #attackSpeed: double
-        #cooldown: double
-        +attack()*
-        +calculateDamage(playerStats): int
-    }
-    
-    class MeleeWeapon {
-        <<abstract>>
-        #range: double
-        #arcAngle: double
-        +attack()
-    }
-    
-    class Sword {
-        +attack()
-    }
-    
-    Weapon <|-- MeleeWeapon
-    MeleeWeapon <|-- Sword
+Using self-referential generic builders to avoid constructor overload.
+
+```java
+Player p = new Player.Builder()
+    .x(100).y(50)
+    .health(150)
+    .stats(new PlayerStats())
+    .build();
+
+Enemy e = new Enemy.Builder()
+    .x(0).y(0)
+    .enemyTier(EnemyTier.D)
+    .build();
 ```
-
-**Design Decision:** Weapons are abstract because you never instantiate "a weapon" — you instantiate a Sword, Katana, etc. This follows OOP best practices.
 
 ---
 
@@ -161,66 +133,7 @@ classDiagram
 
 **Approach:** Flat bonuses + Multipliers (applied in order).
 
-```java
-class PlayerStats {
-    // Flat bonuses (added to base)
-    public int flatDamage = 0;
-    public int flatHealth = 0;
-    
-    // Multipliers (applied after flat bonuses)
-    public double damageMultiplier = 1.0;
-    public double attackSpeedMultiplier = 1.0;
-    public double cooldownMultiplier = 1.0;
-    public double luckMultiplier = 1.0;
-    
-    // Base values
-    public int maxHealth = 100;
-    public double moveSpeed = 5.0;
-}
-```
-
 **Damage Calculation:**
 ```
 Final Damage = (Weapon.baseDamage + Player.flatDamage) × Player.damageMultiplier
 ```
-
-**Item Examples:**
-```java
-// "+2 damage" item (flat):
-playerStats.flatDamage += 2;
-
-// "+10% damage" item (multiplier):
-playerStats.damageMultiplier += 0.1;
-```
-
----
-
-## Development Approach
-
-> **Guided Learning:** This project is a self-quiz. The user writes all code; this document serves as the blueprint and reference.
-
-### Phase 1 Deliverables (User implements)
-1. Create folder structure
-2. Write `Movable.java` interface
-3. Write `Damageable.java` interface
-4. Write `Entity.java` abstract class
-5. Write `Player.java` extending Entity, implementing Damageable
-
----
-
-## Verification Plan
-
-### Manual Testing (User-driven)
-Since this is a learning exercise, verification is done by:
-
-1. **Compile check:** `javac` should compile all files without errors
-2. **Unit behavior:** User writes a simple `Main.java` to test:
-   - Create a Player, move it, verify position changes
-   - Call `takeDamage()`, verify health decreases
-   - Verify `isDead()` returns true when health ≤ 0
-
-### Future Automated Tests
-Once core classes exist, consider adding JUnit tests for:
-- Damage calculations
-- Stat multiplier stacking
-- Wave scaling logic
