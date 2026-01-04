@@ -1,10 +1,10 @@
 # Java Survivors Prototype - Task Checklist
 
 ## Phase 1: Foundation (MVP)
-- [ ] Project setup & package structure
-- [ ] Core interfaces (`Movable`, `Damageable`)
-- [ ] `Entity` abstract class
-- [ ] `Player` class with stats system
+- [x] Project setup & package structure
+- [x] Core interfaces (`Movable`, `Damageable`)
+- [x] `Entity` abstract class
+- [/] `Player` class with `PlayerStats`
 - [ ] Basic `Enemy` class with tiers
 
 ## Phase 2: Combat System

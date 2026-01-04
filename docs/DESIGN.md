@@ -34,6 +34,7 @@ survivor-game/
 │   │   ├── Movable.java       # Interface
 │   │   ├── Damageable.java    # Interface  
 │   │   ├── Entity.java        # Abstract base
+│   │   ├── PlayerStats.java   # Player stat multipliers
 │   │   ├── Player.java
 │   │   ├── Enemy.java
 │   │   └── Projectile.java    # For future ranged weapons
