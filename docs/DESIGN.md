@@ -159,28 +159,38 @@ classDiagram
 
 ### Stats System
 
-**Approach:** Multiplier-based (1.0x, 1.5x, 2.0x) rather than flat bonuses.
+**Approach:** Flat bonuses + Multipliers (applied in order).
 
 ```java
 class PlayerStats {
-    double damageMultiplier = 1.0;   // Multiplies weapon damage
-    double attackSpeedMultiplier = 1.0;
-    double cooldownMultiplier = 1.0; // Lower = faster cooldowns
-    double luckMultiplier = 1.0;     // Affects RNG rolls
-    int maxHealth = 100;
-    double moveSpeed = 5.0;
+    // Flat bonuses (added to base)
+    public int flatDamage = 0;
+    public int flatHealth = 0;
+    
+    // Multipliers (applied after flat bonuses)
+    public double damageMultiplier = 1.0;
+    public double attackSpeedMultiplier = 1.0;
+    public double cooldownMultiplier = 1.0;
+    public double luckMultiplier = 1.0;
+    
+    // Base values
+    public int maxHealth = 100;
+    public double moveSpeed = 5.0;
 }
 ```
 
 **Damage Calculation:**
 ```
-Final Damage = Weapon.baseDamage × Player.damageMultiplier
+Final Damage = (Weapon.baseDamage + Player.flatDamage) × Player.damageMultiplier
 ```
 
-**Item Application:**
+**Item Examples:**
 ```java
-// +0.2 damage item means:
-playerStats.damageMultiplier += 0.2;  // 1.0 → 1.2 → 1.4 etc.
+// "+2 damage" item (flat):
+playerStats.flatDamage += 2;
+
+// "+10% damage" item (multiplier):
+playerStats.damageMultiplier += 0.1;
 ```
 
 ---
