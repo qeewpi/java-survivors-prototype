@@ -4,8 +4,8 @@
 - [x] Project setup & package structure
 - [x] Core interfaces (`Movable`, `Damageable`)
 - [x] `Entity` abstract class
-- [/] `Player` class with `PlayerStats`
-- [ ] Basic `Enemy` class with tiers
+- [x] `Player` class with `PlayerStats`
+- [/] Basic `Enemy` class with tiers
 
 ## Phase 2: Combat System
 - [ ] Weapon hierarchy (`Weapon` → `MeleeWeapon` → `Sword`)
