@@ -3,9 +3,28 @@ package entities;
 public class Enemy extends LivingEntity {
     private EnemyTier enemyTier;
 
-    public Enemy(double x, double y, double speed, int health, int damage, EnemyTier enemyTier) {
-        super(x, y, speed, health, damage);
-        this.enemyTier = enemyTier;
+    public Enemy(Builder builder) {
+        super(builder);
+        this.enemyTier = builder.enemyTier;
+    }
+
+    public static class Builder extends LivingEntity.Builder<Builder> {
+        private EnemyTier enemyTier;
+
+        @Override
+        protected Builder self() {
+            return this;
+        }
+
+        public Builder enemyTier(EnemyTier e) {
+            this.enemyTier = e;
+            return this;
+        }
+
+        public Enemy build() {
+            return new Enemy(this);
+        }
+
     }
 
     @Override

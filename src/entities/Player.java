@@ -6,10 +6,35 @@ public class Player extends LivingEntity {
     private PlayerStats stats;
     private Weapon currentWeapon;
 
-    public Player(double x, double y, double speed, int health, int damage, PlayerStats stats, Weapon currentWeapon) {
-        super(x, y, speed, health, damage);
-        this.stats = stats;
-        this.currentWeapon = currentWeapon;
+    public Player(Builder builder) {
+        super(builder);
+        this.stats = builder.stats;
+        this.currentWeapon = builder.currentWeapon;
+    }
+
+    public static class Builder extends LivingEntity.Builder<Builder> {
+        private PlayerStats stats;
+        private Weapon currentWeapon;
+    
+        @Override
+        protected Builder self() {
+            return this;
+        }
+
+        public Builder stats(PlayerStats s) {
+            this.stats = s;
+            return this;
+        }
+
+        public Builder currentWeapon(Weapon w) {
+            this.currentWeapon = w;
+            return this;
+        }
+
+        public Player build() {
+            return new Player(this);
+        }
+
     }
 
     @Override
