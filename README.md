@@ -33,7 +33,9 @@ src/
   - Classes: `Entity`, `LivingEntity`, `Player`, `Enemy`
   - Builder pattern with self-referential generics
 
-## 🤖 Agent Configuration
+## 🤖 Project-Specific Coding Rules
+
+Custom rules and workflows in `.agent/` define behaviors for agentic coding tools working on this project.
 
 ### Rules (`.agent/rules/`)
 | Rule | Purpose |
