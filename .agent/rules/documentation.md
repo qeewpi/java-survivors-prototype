@@ -6,10 +6,10 @@ description: Documentation sync rules
 
 # Source of Truth
 - Project docs (docs/) = persistent master source
-- Brain artifacts = conversation-specific, populated FROM docs
+- Brain artifacts = conversation-specific
 
 # Rules
 - Update project docs after significant changes
 - Use Conventional Commits - feat:, docs:, refactor:
 - After design changes - Update docs, commit, push
-- Don't overwrite docs with conversation-specific artifact content
+- Don't put conversation-specific details into docs
