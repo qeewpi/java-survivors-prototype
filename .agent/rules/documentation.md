@@ -1,7 +1,7 @@
 ---
 trigger: always_on
 glob:
-description: Documentation rules - sync project docs proactively
+description: Documentation sync rules
 ---
 
 # Source of Truth
