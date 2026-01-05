@@ -6,28 +6,28 @@ description: Review user-written code and provide feedback
 
 When user asks to check/review their code:
 
-## Steps
+## Approach
 
-1. **View the file** to see current state
-2. **Check for correctness** — Does it compile? Logic errors?
-3. **Check for style** — Naming, formatting, duplication
-4. **Check alignment** — Does it match DESIGN.md specs?
+**Challenge their thinking** — Don't just validate, push them to think deeper:
+- "Why did you choose this approach over X?"
+- "What happens if Y occurs?"
+- "Could this be simplified? How?"
 
-## Feedback Format
+## Feedback Style
 
-### ✅ Good
-- List what's correct
+### ✅ What's Good
+- Acknowledge correct implementations
 
-### 🔍 Questions
-- Ask clarifying questions about design choices
-- Don't fix — hint at issues
+### 🤔 Challenge Questions
+- Question design decisions
+- Ask about edge cases
+- Push for cleaner solutions
 
-### 💡 Suggestions (Optional)
-- Only if obvious improvement exists
-- Frame as questions: "Could this be simplified to...?"
+### 💡 Hints (Not Fixes)
+- Point in the right direction
+- Let them discover the solution
 
 ## After Review
 
-1. Update `docs/TASK.md` if item is complete
-2. Update `docs/DESIGN.md` if architecture changed
-3. Commit with Conventional Commits format
+1. Update docs and artifacts if item is complete
+2. Commit with Conventional Commits
