@@ -33,13 +33,23 @@ src/
   - Classes: `Entity`, `LivingEntity`, `Player`, `Enemy`
   - Builder pattern with self-referential generics
 
-## 📚 Learning Goals
+## 🤖 Agent Configuration
 
-- Abstract classes & inheritance
-- Interfaces for shared behaviors
-- Builder pattern with generics
-- Polymorphism in weapon/enemy systems
-- Composition (stats, items)
+### Rules (`.agent/rules/`)
+| Rule | Purpose |
+|------|---------|
+| `learning-mode.md` | Guide, don't spoonfeed code |
+| `code-quality.md` | Avoid magic numbers, follow phases |
+| `documentation.md` | Sync docs, use conventional commits |
+| `version-control.md` | Atomic commits, conventional commit types |
+
+### Workflows (`.agent/workflows/`)
+| Workflow | Trigger |
+|----------|---------|
+| `/sync-docs` | Sync docs + rules/workflows |
+| `/code-review` | Review code, challenge thinking |
+| `/follow-phases` | Don't skip phases in TASK.md |
+| `/capture-notes` | Capture specific concept struggles |
 
 ## 📖 Documentation
 
