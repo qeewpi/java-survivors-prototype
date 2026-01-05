@@ -38,18 +38,18 @@ src/
 ### Rules (`.agent/rules/`)
 | Rule | Purpose |
 |------|---------|
-| `learning-mode.md` | Guide, don't spoonfeed code |
-| `code-quality.md` | Avoid magic numbers, follow phases |
-| `documentation.md` | Sync docs, use conventional commits |
-| `version-control.md` | Atomic commits, conventional commit types |
+| `learning-mode.md` | Learning approach |
+| `code-quality.md` | Code standards |
+| `documentation.md` | Documentation sync |
+| `version-control.md` | Commit conventions |
 
 ### Workflows (`.agent/workflows/`)
-| Workflow | Trigger |
+| Workflow | Purpose |
 |----------|---------|
-| `/sync-docs` | Sync docs + rules/workflows |
-| `/code-review` | Review code, challenge thinking |
-| `/follow-phases` | Don't skip phases in TASK.md |
-| `/capture-notes` | Capture specific concept struggles |
+| `/sync-docs` | Sync documentation |
+| `/code-review` | Code review process |
+| `/follow-phases` | Phase tracking |
+| `/capture-notes` | Learning notes |
 
 ## 📖 Documentation
 
