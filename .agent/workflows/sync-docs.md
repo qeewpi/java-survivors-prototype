@@ -1,43 +1,44 @@
 ---
-description: Keep project documentation in sync as work progresses
+description: Keep project docs and agent config in sync
 ---
 
 # Documentation Sync Workflow
 
-After completing any significant work (completing a task, finishing a phase, or ending a session), update the following:
+After significant work (checkpoint, phase, or session end):
 
-## Required Updates
+## 1. Project Docs (Master Source)
 
-### 1. Project Docs (`docs/`)
+### docs/TASK.md
+- Mark completed [x] / in-progress [/]
 
-#### `docs/TASK.md`
-- Mark completed items with `[x]`
-- Mark in-progress items with `[/]`
-- Add new sub-tasks if scope expanded
+### docs/DESIGN.md
+- Update status markers
+- Add new classes/interfaces
+- Document architecture decisions
 
-#### `docs/DESIGN.md`
-- Update status markers (📋 Planned → ✅ Done)
-- Add new classes/interfaces to package structure
-- Document any architecture decisions made
+### docs/NOTES.md
+- Add learning notes for concepts struggled with
 
-#### `docs/NOTES.md`
-- Add learning notes for new patterns/concepts used
-- Document any "gotchas" or tricky implementations
+## 2. Agent Config (if applicable)
 
-### 2. Brain Artifacts
+### .agent/rules/
+- Update if behavior rules change
 
-Keep these in sync with project docs:
+### .agent/workflows/
+- Update if processes change
+- This workflow is recursive - if the workflow itself changes, update it
 
-- `task.md` — Mirror of `docs/TASK.md`
-- `implementation_plan.md` — Mirror of `docs/DESIGN.md`
+## 3. Brain Artifacts (Conversation-Specific)
+
+Artifacts track THIS conversation's goal.
+- Don't put conversation-specific details into docs
 
 ## When to Sync
 
-- ✅ After completing a phase
-- ✅ After implementing a new class/feature
-- ✅ Before ending a session
-- ✅ When asked to "resume" work (read docs first!)
+- After completing a phase/checkpoint
+- After any major change needing alignment
+- Before ending a session
 
 ## Why This Matters
 
-New conversations don't have access to previous session artifacts. Project docs are the **only** persistent context across sessions.
+Project docs capture the project state at any point in time.
