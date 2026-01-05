@@ -10,8 +10,19 @@ description: Version control best practices
 - Easy to track one particular change
 
 # Conventional Commits
-- feat: new feature
-- docs: documentation changes
-- refactor: code restructuring
-- chore: maintenance tasks
-- fix: bug fixes
+Format: <type>(<optional scope>): <description>
+
+## Types
+- feat: add/adjust/remove a feature
+- fix: bug fix
+- refactor: restructure code without changing behavior
+- perf: performance improvement (special refactor)
+- style: formatting, whitespace, no behavior change
+- test: add/correct tests
+- docs: documentation only
+- build: build tools, dependencies, version
+- ops: infrastructure, CI/CD, deployment
+- chore: maintenance tasks (.gitignore, init)
+
+## Breaking Changes
+Use ! before colon: feat(api)!: remove endpoint
