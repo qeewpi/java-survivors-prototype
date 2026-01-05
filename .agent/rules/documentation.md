@@ -1,9 +1,15 @@
 ---
 trigger: always_on
 glob:
-description: Documentation rules - sync docs and artifacts proactively
+description: Documentation rules - sync project docs proactively
 ---
 
-- Proactively sync docs AND artifacts - Update both without being asked
+# Source of Truth
+- Project docs (docs/) = persistent master source
+- Brain artifacts = conversation-specific, populated FROM docs
+
+# Rules
+- Update project docs after significant changes
 - Use Conventional Commits - feat:, docs:, refactor:
-- After design changes - Update docs, artifacts, commit, push
+- After design changes - Update docs, commit, push
+- Don't overwrite docs with conversation-specific artifact content
