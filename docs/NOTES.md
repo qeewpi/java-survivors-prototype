@@ -36,3 +36,18 @@
 - `extends LivingEntity.Builder<Builder>` — inherit parent methods, specify return type
 - `self()` returns `this` — enables parent methods to return correct type
 - `build()` calls `new Player(this)` — passes builder to Player constructor so it can extract values
+
+## Rules vs Workflows (Agent Config)
+
+- **Rules** (`.agent/rules/`) — Always-on behavioral constraints, passively followed
+- **Workflows** (`.agent/workflows/`) — Step-by-step procedures, triggered on demand
+- If it's "always do this" → rule
+- If it's "when I say X, do Y" → workflow
+
+## Agent Manager vs Code View
+
+- **Agent Manager** — Delegation with requirements ("build this for me")
+- **Code View** — Micro-managed collaboration ("do this step, now this step")
+- Same AI, different level of autonomy you're giving it
+- Code View = you're the coder with a copilot; Agent Manager = you're the product manager
+- For learning: use Code View (you stay hands-on, build understanding)

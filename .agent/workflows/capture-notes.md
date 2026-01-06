@@ -1,23 +1,23 @@
----
+﻿---
 description: Capture learning notes from conversation
 ---
 
 # Capture Notes Workflow
 
-When user struggled with a specific concept:
+Capture concepts that finally clicked after struggling to understand them.
 
 ## What to Capture
 
 - The specific concept/syntax that was confusing
-- Why it was confusing
-- The clarifying insight (what clicked)
+- The clarifying insight (what made it click)
+- Why it was hard before vs clear now
 
 ## Keep It Specific
 
-Don't capture topic overviews. Capture the exact thing that was hard.
+Don't capture topic overviews. Capture the exact breakthrough.
 
 Bad: Builder Pattern
-Good: Self-Referential Generic: <T extends Builder<T>>
+Good: Self-Referential Generic: <T extends Builder<T>> - returns the subclass type, not Object
 
 ## Format
 
