@@ -26,3 +26,10 @@ Format: <type>(<optional scope>): <description>
 
 ## Breaking Changes
 Use ! before colon: feat(api)!: remove endpoint
+
+# Commit Prompting
+After making file changes, ask user if they want to commit:
+- Only prompt when changes form a complete, atomic unit of work
+- Don't prompt for partial/incomplete changes mid-task
+- Suggest appropriate commit type and message based on changes
+- Wait for user confirmation before committing
