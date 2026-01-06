@@ -1,15 +1,15 @@
----
+﻿---
 description: Keep project docs and agent config in sync
 ---
 
-# Documentation Sync Workflow
+# Sync Docs
 
 After significant work (checkpoint, phase, or session end):
 
 ## 1. Project Docs (Master Source)
 
 ### docs/TASK.md
-- Mark completed [x] / in-progress [/]
+- Mark completed `[x]` / in-progress `[/]`
 
 ### docs/DESIGN.md
 - Update status markers
@@ -17,7 +17,7 @@ After significant work (checkpoint, phase, or session end):
 - Document architecture decisions
 
 ### docs/NOTES.md
-- Add learning notes for concepts struggled with
+- Add learning notes for concepts that clicked
 
 ## 2. Agent Config (if applicable)
 
@@ -26,19 +26,12 @@ After significant work (checkpoint, phase, or session end):
 
 ### .agent/workflows/
 - Update if processes change
-- This workflow is recursive - if the workflow itself changes, update it
 
-## 3. Brain Artifacts (Conversation-Specific)
+## 3. Brain Artifacts
 
-Artifacts track THIS conversation's goal.
-- Don't put conversation-specific details into docs
+- Artifacts track THIS conversation's goal
+- Don't put conversation-specific details into project docs
 
-## When to Sync
+## 4. Commit
 
-- After completing a phase/checkpoint
-- After any major change needing alignment
-- Before ending a session
-
-## Why This Matters
-
-Project docs capture the project state at any point in time.
+- Use Conventional Commits format
