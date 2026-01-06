@@ -2,27 +2,28 @@
 description: Capture learning notes from conversation
 ---
 
-# Capture Notes Workflow
+# Capture Notes
 
-Capture concepts that finally clicked after struggling to understand them.
+When a concept finally clicks after struggling to understand it:
 
-## What to Capture
+## 1. Identify the Breakthrough
 
-- The specific concept/syntax that was confusing
-- The clarifying insight (what made it click)
-- Why it was hard before vs clear now
+- What specific concept/syntax was confusing?
+- What was the clarifying insight?
 
-## Keep It Specific
+## 2. Keep It Specific
 
 Don't capture topic overviews. Capture the exact breakthrough.
 
-Bad: Builder Pattern
-Good: Self-Referential Generic: <T extends Builder<T>> - returns the subclass type, not Object
+- Bad: "Builder Pattern"
+- Good: "Self-Referential Generic `<T extends Builder<T>>`  returns subclass type, not Object"
 
-## Format
+## 3. Format
 
-Brief and scannable - bullet points, minimal code.
+- Brief and scannable
+- Bullet points, minimal code
+- Focus on what made it click
 
-## Where to Save
+## 4. Save
 
-- docs/NOTES.md
+- Add to `docs/NOTES.md` under appropriate heading
