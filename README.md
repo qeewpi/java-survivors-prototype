@@ -40,18 +40,18 @@ Custom rules and workflows in `.agent/` define behaviors for agentic coding tool
 ### Rules (`.agent/rules/`)
 | Rule | Purpose |
 |------|---------|
-| `learning-mode.md` | Learning approach |
 | `code-quality.md` | Code standards |
 | `documentation.md` | Documentation sync |
 | `version-control.md` | Commit conventions |
+| `follow-phases.md` | Phase and task adherence |
+| `feedback-guidelines.md` | Interaction and teaching style |
 
 ### Workflows (`.agent/workflows/`)
 | Workflow | Purpose |
 |----------|---------|
 | `/sync-docs` | Sync documentation |
 | `/code-review` | Code review process |
-| `/follow-phases` | Phase tracking |
-| `/capture-notes` | Learning notes |
+| `/capture-notes` | Capture learning notes |
 
 ## Documentation
 
